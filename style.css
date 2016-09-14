@@ -1,0 +1,10 @@
+body {
+  font-family: "Helvetica Neue", Lato, Roboto, Helvetica, Arial, sans-serif;
+}
+header, article {
+  padding: 1rem;
+  margin: 0.5rem;
+}
+article {
+  padding-top: 2rem;
+}

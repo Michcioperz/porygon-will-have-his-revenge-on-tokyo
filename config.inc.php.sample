@@ -1,0 +1,5 @@
+<?php
+define('SQL_URI', 'mysql:host=localhost;dbname=porygon;charset=utf8mb4');
+define('SQL_USER', 'porygon');
+define('SQL_PASSWORD', 'area11');
+

@@ -1,0 +1,4 @@
+<Files ~ "(((^|/)\.ht.+$)|\.inc\.php$)">
+Order Allow,Deny
+Deny from all
+</Files>

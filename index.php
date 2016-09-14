@@ -1,2 +1,2 @@
 <?php
-require_once 'porygon.php';
+require_once 'porygon.inc.php';

@@ -1,5 +1,56 @@
 <?php
+
+// Welcome to the config file of Porygon Will Have His Revenge On Tokyo,
+// a heavily opinionated framework made for purely one website. Or more
+// precisely, for a temporary sub-version of one website.
+
+// Yes, this framework is named after a song, a one with a title that
+// takes longer to write and comprehend that it lasts.
+
+// No, google it yourself.
+
+// Since you're here anyway, have another quote from another song.
+// "Please find yourself at home, and I hope you'll have a great time.
+//  Just one thing, forget everything you've seen on the outside.
+//  Cause, you know, it's not real."
+//                     -- Zanzlanz - The Place That Takes Shapes (2014)
+
+/* The most important part
+   ======================= */
+
+define('SITE_TITLE', 'Having Revenge On Tokyo');
+define('SITE_SUBTITLE', 'Porygon's personal adventure log');
+
+/* What might be useful
+   ==================== */
+
+// This piece of software is meant to run in production environment as
+// soon as we get it written. Except we take time to write docs (wow!).
+
+// But since nothing is simple and bugs always appear, most definitely
+// you won't like it when errors start happening and you will be too
+// scared to break the other half of the website to debug it.
+
+// Say, if PRODUCTION_ENVIRONMENT gets even *defined*, Porygon will no
+// longer output errors to commoners. It will leave them with a note
+// about being unable to exact its revenge on Tokyo.
+
+define('PRODUCTION_ENVIRONMENT', true);
+
+// But you still want to get help, and here it comes! The debug key!
+// Put it in a cookie named DEBUG_KEY in your browser or curl or what
+// other damn thing you're using, and the error messages will flock to
+// you like, well, dunno, find a cool analogy and send a pull request.
+
+define('DEBUG_KEY', 'toasttotheredqueen');
+
+/* Database setup
+   ============== */
+
+// Access to the database is defined in the form of what PDO expects as
+// parameters. We could probably make the whole thing use SQLite, but it
+// would take additional time to skip user and password and it's useless.
+
 define('SQL_URI', 'mysql:host=localhost;dbname=porygon;charset=utf8mb4');
 define('SQL_USER', 'porygon');
 define('SQL_PASSWORD', 'area11');
-

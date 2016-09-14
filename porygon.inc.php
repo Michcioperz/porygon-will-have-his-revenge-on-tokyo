@@ -1,7 +1,16 @@
 <?php
   define("PORYGON_VERSION", "0.1.0");
-  ob_start();
   require_once "config.inc.php";
+  if ((defined("DEBUG_KEY") && $_COOKIE["DEBUG_KEY"] === DEBUG_KEY) || (!defined("DEBUG_KEY") && !defined("PRODUCTION_ENVIRONMENT"))) {
+    error_reporting(E_ALL || E_STRICT);
+    ini_set('html_errors', true);
+  } else {
+    set_error_handler(function($errno, $errstr) {
+      ob_end_clean();
+      die("An error has occured. Porygon can no longer have revenge on Tokyo.");
+    });
+  }
+  ob_start();
   function assert_database() {
     global $db;
     if (!defined("SQL_UP")) $db = new PDO(SQL_URI, SQL_USER, SQL_PASSWORD);
@@ -14,6 +23,7 @@
     array_push($_injects[$scope], $func);
   }
   function _render_injects($scope) {
+    global $_injects;
     foreach ($_injects[$scope] as $inject) {
       echo $inject();
     }

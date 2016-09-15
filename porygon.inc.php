@@ -9,15 +9,16 @@
   require_once "config.inc.php";
   
   // Doesn't sound too hard, does it? Okay, let's see if we're communing with a deity and what defines (haha, nailed it) a deity.
-  
-  if ((defined("DEBUG_KEY") && $_COOKIE["DEBUG_KEY"] === DEBUG_KEY) || (!defined("DEBUG_KEY") && !defined("PRODUCTION_ENVIRONMENT"))) {
-    error_reporting(E_ALL || E_STRICT);
-    ini_set('html_errors', true);
-  } else {
-    set_error_handler(function($errno, $errstr) {
-      ob_end_clean();
-      die("An error has occured. Porygon can no longer have revenge on Tokyo.");
-    });
+  if (!defined("BYPASS_THE_GODDAMN_BUGGY_DEBUG_HANDLER")) {
+    if ((defined("DEBUG_KEY") && $_COOKIE["DEBUG_KEY"] === DEBUG_KEY) || (!defined("DEBUG_KEY") && !defined("PRODUCTION_ENVIRONMENT"))) {
+      error_reporting(E_ALL || E_STRICT);
+      ini_set('html_errors', true);
+    } else {
+      set_error_handler(function($errno, $errstr) {
+        ob_end_clean();
+        die("An error has occured. Porygon can no longer have revenge on Tokyo.");
+      });
+    }
   }
   
   // Alright, I think we're all set to start scribbling.
@@ -51,9 +52,10 @@
   
   function _render_injects($scope) {
     global $_injects;
-    foreach ($_injects[$scope] as $inject) {
-      echo $inject();
-    }
+    if (array_key_exists($scope, $_injects) && count($_injects[$scope]))
+      foreach ($_injects[$scope] as $inject) {
+        echo $inject();
+      }
   }
   
   // And when the preparations are done, we'll go for this thing! Neat.

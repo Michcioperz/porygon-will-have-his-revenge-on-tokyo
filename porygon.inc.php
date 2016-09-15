@@ -66,9 +66,21 @@
     die(); // sad panda
   }
   
-  // So, now a good, healthy default template to make this work just fine.
-  
-  inject("html", function() {
+  // Someone might be interested in our opinionated templates that are supposed to look just fine.
+  // So, now some good, healthy default templates to make this work just fine.
+  class PorygonTrustFund
+  {
+    function __construct($founder) {
+      $this->boss = $founder;
+    }
+    function to_take_care_of_my($scope) {
+      inject($scope, $this->boss);
+    }
+  }
+  function i_trust_porygons($something) {
+    switch ($something) {
+      case "main_template":
+        return new PorygonTrustFund(function() {
 ?>
 <!DOCTYPE html>
 <html lang="<?php if (defined("SITE_LANG")) echo SITE_LANG; else echo "pl"; ?>">
@@ -83,7 +95,15 @@
     <?php _render_injects("body"); ?>
   </body>
 </html>
-<?php });
+<?php   });
+        break;
+      case "router":
+        return new PorygonTrustFund(function() {
+          // TODO: actual router
+        });
+        break;
+    }
+  }
   
   // With that template ready, hell yeah, that's it, Porygon can have his revenge on Tokyo just about fine. Good job there, crew!
   

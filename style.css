@@ -1,5 +1,11 @@
 body {
   font-family: "Helvetica Neue", Lato, Roboto, Helvetica, Arial, sans-serif;
+  background: floralwhite;
+  color: darkslategray;
+}
+main {
+  width: 80%;
+  max-width: 1000px;
 }
 header, article {
   padding: 1rem;
